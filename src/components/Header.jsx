@@ -2,7 +2,7 @@ const Header = ({ title, studentCount, averageScore }) => {
   return (
     <header className="header">
       <h1 className="header-title">{title}</h1>
-      <p className="header-text">
+      <p>
         {`${studentCount} Students Enrolled | Class Average: ${averageScore.toFixed(1)}%`}
       </p>
     </header>

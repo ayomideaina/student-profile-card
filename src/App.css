@@ -22,26 +22,28 @@ body {
 
 .header {
   padding: 32px 0 24px;
-  margin-bottom: 24px;
 }
 
 .header-title {
   font-size: 24px;
   font-weight: 700;
-  color: #1a1a2e;
   margin-bottom: 6px;
+}
+
+.filter-toggle-input {
+  display: none;
 }
 
 .filter-bar {
   display: flex;
   gap: 10px;
-  margin-bottom: 28px;
+  padding: 16px 0;
+  margin-bottom: 20px;
 }
 
 .filter-btn {
   padding: 8px 18px;
   border-radius: 999px;
-  border: 2px solid #dde1e7;
   background: #ffffff;
   color: #555e6e;
   font-size: 14px;
@@ -55,10 +57,38 @@ body {
   color: #4a90d9;
 }
 
-.filter-btn--active {
+#btn-all {
   background: #4a90d9;
-  border-color: #4a90d9;
   color: #ffffff;
+  border-color: #4a90d9;
+}
+
+.filter-toggle-input:checked ~ .filter-bar #btn-all {
+  background: #ffffff;
+  color: #555e6e;
+  border-color: #dde1e7;
+}
+
+.filter-toggle-input:checked ~ .filter-bar #btn-active {
+  background: #4a90d9;
+  color: #ffffff;
+  border-color: #4a90d9;
+}
+
+.list-all {
+  display: block;
+}
+
+.list-active {
+  display: none;
+}
+
+.filter-toggle-input:checked ~ main .list-all {
+  display: none;
+}
+
+.filter-toggle-input:checked ~ main .list-active {
+  display: block;
 }
 
 .student-list {
@@ -104,6 +134,8 @@ body {
   gap: 12px;
   border: 2px solid transparent;
   transition: transform 0.15s ease;
+  height: 100%;
+  min-height: 320px;
 }
 
 .student-card:hover {
@@ -122,11 +154,6 @@ body {
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #e8edf2;
-}
-
-.card-name {
-  font-weight: 600;
-  color: #1a1a2e;
 }
 
 .card-badges {
@@ -201,14 +228,14 @@ body {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  flex-grow: 1;
+  justify-content: flex-end;
 }
 
 .skills-title {
   font-size: 12px;
   font-weight: 600;
-  color: #555e6e;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 .skills-list {
@@ -224,7 +251,6 @@ body {
   background: #f0f2f5;
   border: 1px solid #dde1e7;
   border-radius: 5px;
-  color: #333;
 }
 
 .skills-empty {
@@ -233,12 +259,7 @@ body {
   font-style: italic;
 }
 
-
 @media (max-width: 600px) {
-  .header-title {
-    font-size: 19px;
-  }
-
   .cards-grid {
     grid-template-columns: 1fr;
   }

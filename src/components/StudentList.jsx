@@ -1,6 +1,6 @@
 import StudentCard from './StudentCard';
 
-const StudentList = ({ students, title = 'All Students', children }) => {
+const StudentList = ({ students, title = 'All Students', filterActive = false, children }) => {
   return (
     <section className="student-list">
       <h2 className="list-title">{title}</h2>
@@ -10,7 +10,9 @@ const StudentList = ({ students, title = 'All Students', children }) => {
       ) : (
         <div className="cards-grid">
           {students.map((student) => (
-            <StudentCard key={student.id} {...student} />
+            filterActive
+              ? student.isActive && <StudentCard key={student.id} {...student} />
+              : <StudentCard key={student.id} {...student} />
           ))}
         </div>
       )}
@@ -23,3 +25,4 @@ const StudentList = ({ students, title = 'All Students', children }) => {
 };
 
 export default StudentList;
+

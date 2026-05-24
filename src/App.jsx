@@ -1,7 +1,6 @@
-import { useState } from "react";
-import Header from "./components/Header";
-import StudentList from "./components/StudentList";
-import "./App.css";
+import Header from './components/Header';
+import StudentList from './components/StudentList';
+import './App.css';
 
 const students = [
   {
@@ -12,7 +11,7 @@ const students = [
     score: 92,
     isActive: true,
     skills: ["React", "CSS", "TypeScript"],
-    avatar: "https://i.pravatar.cc/150?img=1",
+    avatar: "https://i.pravatar.cc/150?img=1"
   },
   {
     id: 2,
@@ -22,7 +21,7 @@ const students = [
     score: 67,
     isActive: true,
     skills: ["Python", "Django"],
-    avatar: "https://i.pravatar.cc/150?img=3",
+    avatar: "https://i.pravatar.cc/150?img=3"
   },
   {
     id: 3,
@@ -32,7 +31,7 @@ const students = [
     score: 88,
     isActive: false,
     skills: ["HTML", "CSS", "JavaScript", "Vue"],
-    avatar: "https://i.pravatar.cc/150?img=5",
+    avatar: "https://i.pravatar.cc/150?img=5"
   },
   {
     id: 4,
@@ -42,7 +41,7 @@ const students = [
     score: 45,
     isActive: true,
     skills: [],
-    avatar: "https://i.pravatar.cc/150?img=7",
+    avatar: "https://i.pravatar.cc/150?img=7"
   },
   {
     id: 5,
@@ -52,7 +51,7 @@ const students = [
     score: 76,
     isActive: true,
     skills: ["React", "Node.js"],
-    avatar: "https://i.pravatar.cc/150?img=9",
+    avatar: "https://i.pravatar.cc/150?img=9"
   },
   {
     id: 6,
@@ -62,7 +61,7 @@ const students = [
     score: 53,
     isActive: false,
     skills: ["SQL"],
-    avatar: "https://i.pravatar.cc/150?img=11",
+    avatar: "https://i.pravatar.cc/150?img=11"
   },
   {
     id: 7,
@@ -72,7 +71,7 @@ const students = [
     score: 81,
     isActive: true,
     skills: ["Dart", "Flutter", "Firebase"],
-    avatar: "https://i.pravatar.cc/150?img=13",
+    avatar: "https://i.pravatar.cc/150?img=13"
   },
   {
     id: 8,
@@ -82,47 +81,50 @@ const students = [
     score: 39,
     isActive: true,
     skills: ["HTML", "CSS"],
-    avatar: "https://i.pravatar.cc/150?img=15",
-  },
+    avatar: "https://i.pravatar.cc/150?img=15"
+  }
 ];
 
+const averageScore = students.reduce((sum, s) => sum + s.score, 0) / students.length;
+const activeStudents = students.filter((s) => s.isActive);
+
 const App = () => {
-  const [showActiveOnly, setShowActiveOnly] = useState(false);
-
-  const averageScore =
-    students.reduce((sum, s) => sum + s.score, 0) / students.length;
-
-  const displayedStudents = showActiveOnly
-    ? students.filter((s) => s.isActive)
-    : students;
-
   return (
-    <main className="app">
+    <div className="app">
       <Header
         title="KodeCamp 6.0 — Student Dashboard"
         studentCount={students.length}
         averageScore={averageScore}
       />
 
+  
+      <input type="checkbox" id="filter-toggle" className="filter-toggle-input" />
+
       <div className="filter-bar">
-        <button
-          className={`filter-btn ${showActiveOnly ? "" : "filter-btn--active"}`}
-          onClick={() => setShowActiveOnly(false)}
-        >
-          All Students
-        </button>
-        <button
-          className={`filter-btn ${showActiveOnly ? "filter-btn--active" : ""}`}
-          onClick={() => setShowActiveOnly(true)}
-        >
-          Active Students
-        </button>
+        <label htmlFor="filter-toggle" className="filter-btn" id="btn-active">
+          Show Active Only
+        </label>
+      
+        <label htmlFor="filter-toggle" className="filter-btn" id="btn-all">
+          Show All
+        </label>
       </div>
 
-      <StudentList students={displayedStudents} title="Student Roster">
-        <p>End of student list — {displayedStudents.length} total</p>
-      </StudentList>
-    </main>
+      <main className="app-main">
+        <div className="list-all">
+          <StudentList students={students} title="Student Roster">
+            <p>End of student list — {students.length} total</p>
+          </StudentList>
+        </div>
+        
+        <div className="list-active">
+          <StudentList students={activeStudents} title="Active Students">
+            <p>End of student list — {activeStudents.length} total</p>
+          </StudentList>
+        </div>
+
+      </main>
+    </div>
   );
 };
 

@@ -1,16 +1,74 @@
-# React + Vite
+# KodeCamp 6.0 — Student Profile Card
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application that displays student profile cards with detailed information, grades, and skills. Built with React + Vite.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Student Dashboard**: View all students or filter to show only active students
+- **Profile Cards**: Display student information including name, track, status, and grade
+- **Grade Calculation**: Automatic grade assignment based on score (A-F scale)
+- **Skill Tracking**: List of skills for each student
+- **Status Indicators**: Visual distinction between active and inactive students
+- **Average Score**: Dashboard header displays the average score across all students
 
-## React Compiler
+## Project Structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```
+src/
+├── App.jsx                 # Main app component with student data and filtering
+├── App.css                 # Main styles
+├── main.jsx               # React entry point
+├── index.css              # Global styles
+├── components/
+│   ├── Header.jsx         # Dashboard header
+│   ├── StudentList.jsx    # List container for student cards
+│   ├── StudentCard.jsx    # Individual student profile card
+│   ├── Badge.jsx          # Badge component for labels
+│   └── StatBar.jsx        # Score/stat bar component
+└── assets/                # Static assets
+```
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Installation
+
+```bash
+npm install
+```
+
+### Development
+
+```bash
+npm run dev
+```
+
+The app will be available at `http://localhost:5173`
+
+### Build
+
+```bash
+npm run build
+```
+
+## Component Details
+
+### StudentCard
+Contains the `getGrade` utility function that converts numeric scores to letter grades:
+- A: 90-100
+- B: 80-89
+- C: 70-79
+- D: 60-69
+- F: Below 60
+
+## Technologies Used
+
+- React
+- Vite
+- CSS3
+- ES6+
+
+
