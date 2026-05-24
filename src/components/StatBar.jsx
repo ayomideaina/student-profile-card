@@ -7,7 +7,7 @@ const StatBar = ({ score, label = 'Score' }) => {
     : '#f44336';
 
   return (
-    <div className="stat-bar-wrapper">
+    <section className="stat-bar-wrapper">
       <div className="stat-bar-header">
         <span className="stat-bar-label">{label}</span>
         <span className="stat-bar-value">{score}%</span>
@@ -18,7 +18,7 @@ const StatBar = ({ score, label = 'Score' }) => {
           style={{ width: `${score}%`, backgroundColor: color }}
         />
       </div>
-    </div>
+    </section>
   );
 };
 

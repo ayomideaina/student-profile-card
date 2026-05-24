@@ -1,6 +1,13 @@
 import Badge from "./Badge";
 import StatBar from "./StatBar";
-import { getGrade } from "../App";
+
+const getGrade = (score) => {
+  if (score >= 90) return "A";
+  if (score >= 80) return "B";
+  if (score >= 70) return "C";
+  if (score >= 60) return "D";
+  return "F";
+};
 
 const StudentCard = ({
   firstName,
@@ -15,7 +22,7 @@ const StudentCard = ({
   const statusLabel = isActive ? "Active" : "Inactive";
 
   return (
-    <div
+    <section
       className={`student-card ${isActive ? "card-active" : "card-inactive"}`}>
       <img
         src={avatar}
@@ -47,7 +54,7 @@ const StudentCard = ({
             <p className="skills-empty">No skills listed yet</p>
             )}
         </div>
-    </div>
+    </section>
   );
 };
 
